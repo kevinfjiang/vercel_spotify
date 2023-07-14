@@ -1,0 +1,26 @@
+{
+    "extends": [
+      "plugin:@next/next/recommended",
+      "plugin:react/recommended",
+      "plugin:import/typescript",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
+    "rules": {
+      "prettier/prettier": "error",
+      "max-len": ["error", { "code": 88 }],
+      "@typescript-eslint/indent": ["error", 2],
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+      "import/extensions": ["error", "never"],
+      "import/prefer-default-export": ["off"],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    //todo   "import/no-unresolved": {"caseSensitiveStrict": true}
+    }
+  }

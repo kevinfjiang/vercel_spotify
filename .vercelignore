@@ -1,0 +1,11 @@
+.vercel
+node_modules
+.DS_STORE
+
+*.env
+
+logs
+
+generate-refresh-token.js
+LICENSE.txt
+README.md

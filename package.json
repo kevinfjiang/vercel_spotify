@@ -1,0 +1,53 @@
+{
+  "name": "vercel_spotify",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Github profile",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --fix"
+  },
+  "dependencies": {
+    "next": "^13.4.10",
+    "next-compose-plugins": "^2.2.1",
+    "querystring": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/spotify-api": "0.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "@next/eslint-plugin-next": "^13.4.10",
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinfjiang/vercel_spotify.git"
+  },
+  "keywords": [
+    "spotify",
+    "music",
+    "vercel",
+    "nextjs"
+  ],
+  "author": "Kevin Jiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinfjiang/vercel_spotify/issues"
+  },
+  "homepage": "https://github.com/kevinfjiang/vercel_spotify"
+}
