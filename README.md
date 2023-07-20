@@ -2,9 +2,6 @@
 
 Using vercel to display most liked songs, used for my musichum final project and my README. My previous version was broken therefore I migrated to using NextJS, something vercel will always support because they recently acquired the framework. I've updated to NextJS 13 using the app router and API routes to return an svg. This is fully deployable, granted you follow the setup guide.
 
-## Deploying
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/kevinfjiang/vercel_spotify)
-
 # Setup Guide
 
 Guide by [JoshLmao](https://github.com/JoshLmao)
@@ -76,3 +73,7 @@ That's it! Below is an example of what it should look like. If you have any prob
 
 
 Based off the spotify readme by https://github.com/natemoo-re/natemoo-re.
+
+## Disclaimer
+
+I'm not a javascript/typescript developer. Please feel free to open issues and suggest best practices!
