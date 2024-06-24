@@ -10,13 +10,13 @@ async function getTrack(index: number, open: boolean) {
   checkRedirect(item, open);
 
   let cover = 'https://i.scdn.co/image/ab67616d0000b273346d77e155d854735410ed18';
-  if (item) {
+  if (Object.keys(item).length !== 0) {
     const { images = [] } = item.album || {};
     cover = images[0]?.url;
   }
   const coverImg = await getCover(cover);
 
-  if (item) {
+  if (Object.keys(item).length !== 0) {
     const { name: track } = item;
     const artist = (item.artists || []).map(({ name }) => name).join(', ');
     return <Card index={index} cover={coverImg} artist={artist} track={track} />;

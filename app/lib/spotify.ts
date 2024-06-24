@@ -10,12 +10,15 @@ const {
 const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 const Authorization = `Basic ${basic}`;
 const BASE_URL = `https://api.spotify.com/v1`;
+const LIMIT = 50;
 
 async function getAuthorizationToken() {
   const url = new URL('https://accounts.spotify.com/api/token');
   const body = stringify({ grant_type: 'refresh_token', refresh_token: refreshToken });
   const response = await fetch(url, {
     method: 'POST',
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
     headers: {
       Authorization,
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -48,9 +51,11 @@ export async function topTrack({
 }): Promise<Partial<SpotifyApi.TrackObjectFull>> {
   const token = await getAuthorizationToken();
   const params = new URLSearchParams();
+  const quo = (~~index/LIMIT) * LIMIT;
+  const rem = index % LIMIT;
 
-  params.set('limit', '1');
-  params.set('offset', `${index}`);
+  params.set('limit', `${LIMIT}`);
+  params.set('offset', `${quo}`);
   params.set('time_range', `${timeRange}`);
 
   const response = await fetch(`${BASE_URL}${TOP_TRACKS_ENDPOINT}?${params}`, {
@@ -60,8 +65,8 @@ export async function topTrack({
 
   const data =
     response.status === 200
-      ? ((await response.json()) as SpotifyApi.UsersTopTracksResponse).items[0] : {};
-  return data;
+      ? ((await response.json()) as SpotifyApi.UsersTopTracksResponse).items.at(rem) : {};
+  return data || {};
 }
 
 const TOP_ARTISTS_ENDPOINT = `/me/top/artists`;
@@ -74,8 +79,11 @@ export async function topArtist({
 }): Promise<Partial<SpotifyApi.ArtistObjectFull>> {
   const token = await getAuthorizationToken();
   const params = new URLSearchParams();
-  params.set('limit', '1');
-  params.set('offset', `${index}`);
+  const quo = (~~index/LIMIT) * LIMIT;
+  const rem = index % LIMIT;
+
+  params.set('limit', `${LIMIT}`);
+  params.set('offset', `${quo}`);
   params.set('time_range', `${timeRange}`);
 
   const response = await fetch(`${BASE_URL}${TOP_ARTISTS_ENDPOINT}?${params}`, {
@@ -85,6 +93,6 @@ export async function topArtist({
 
   const data =
     response.status === 200
-      ? ((await response.json()) as SpotifyApi.UsersTopArtistsResponse).items[0] : {};
-  return data;
+      ? ((await response.json()) as SpotifyApi.UsersTopArtistsResponse).items.at(rem) : {};
+  return data || {};
 }

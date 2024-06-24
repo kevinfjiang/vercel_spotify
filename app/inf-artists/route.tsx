@@ -16,7 +16,7 @@ async function getArtist(index: number, open: boolean) {
       : 'https://i.scdn.co/image/ab67616d0000b273346d77e155d854735410ed18';
   const coverImg = await getCover(cover);
 
-  if (item) {
+  if (Object.keys(item).length !== 0) {
     return <Card index={index} cover={coverImg} artist={artist} />;
   }
   return <NotFound index={index} cover={coverImg} type="Artist" />;

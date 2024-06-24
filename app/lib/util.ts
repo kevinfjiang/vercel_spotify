@@ -35,7 +35,6 @@ export async function getResponse(component: React.ReactElement) {
   const response = new Response(pipe as any, { status: 200 });
 
   response.headers.set('Content-Type', 'image/svg+xml');
-  response.headers.set('Cache-Control', 's-maxage=1,·stale-while-revalidate');
 
   return response;
 }
