@@ -45,7 +45,7 @@ const getSpotifyToken = async (authCode) => {
   const body = {
     grant_type: "authorization_code",
     code: authCode,
-    redirect_uri: `http://localhost:${SERVER_PORT}/callback`,
+    redirect_uri: `http://127.0.0.1:${SERVER_PORT}/callback`,
   };
   const formUrlEncodedBody = querystring.stringify(body);
 
@@ -123,7 +123,7 @@ const SCOPES = [
 open(
   `https://accounts.spotify.com/authorize?client_id=${
     configuration["SPOTIFY_CLIENT_ID"]
-  }&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A${SERVER_PORT}%2Fcallback&scope=${SCOPES.join(
+  }&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A${SERVER_PORT}%2Fcallback&scope=${SCOPES.join(
     "%20"
   )}`
 );
