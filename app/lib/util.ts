@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import React from 'react';
+const ReactDOMServer = require('react-dom/server');
 
 const TRANSPARENT_URL =
   'https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png';
@@ -29,12 +30,12 @@ export async function getCover(cover: string) {
 }
 
 export async function getResponse(component: React.ReactElement) {
-  const ReactDOMServer = (await import('react-dom/server')).default;
-  const pipe = await ReactDOMServer.renderToStaticNodeStream(component);
-  // ReadableStream is valid input
-  const response = new Response(pipe as any, { status: 200 });
+  const svg = ReactDOMServer.renderToStaticMarkup(component);
 
-  response.headers.set('Content-Type', 'image/svg+xml');
-
-  return response;
+  return new Response(svg, {
+    status: 200,
+    headers: {
+      'Content-Type': 'image/svg+xml',
+    },
+  });
 }
